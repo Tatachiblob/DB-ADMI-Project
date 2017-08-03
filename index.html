@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="0;url=pages/index.html">
+<title>SB Admin 2</title>
+<script language="javascript">
+    window.location.href = "view/login.php"
+</script>
+</head>
+<body>
+Go to <a href="view/login.php">/view/login.php</a>
+<input type="text" name="country" placeholder="Country" value="<?php echo (isset($countryId)) ? $country: '' ?>" class="form-control" required <?php echo (isset($countryId)) ? "autofocus": '' ?>>
+<input type="text" name="city" placeholder="City" class="form-control" value="<?php echo (isset($cityId)) ? $city: '' ?>" required>
+</body>
+</html>
