@@ -1,5 +1,9 @@
 <?php
+session_start();
 require_once ('../mysqlConnect.php');
+if(!isset($_SESSION['isLogin'])){
+    header("Location: login.php");
+}
 if(!isset($_POST['firstName']) || !isset($_POST['lastName']) || !isset($_POST['country']) || !isset($_POST['city'])){
   header("Location: customerRegistration.php");
 }else{
@@ -13,9 +17,12 @@ if(!isset($_POST['firstName']) || !isset($_POST['lastName']) || !isset($_POST['c
     $postalCode = $_POST['postalCode'];
     $phone = $_POST['phone'];
   }
-  $emailRs = $conn->query("SELECT COUNT(*) AS CTR FROM CUSTOMER WHERE EMAIL = '".$_POST['email']."';");
-  while($row = $emailRs->fetch_assoc()){
-    $count = $row['CTR'];
+  $count = NULL;
+  if(isset($_POST['email']) && $_POST['email'] != ""){
+    $emailRs = $conn->query("SELECT COUNT(*) AS CTR FROM CUSTOMER WHERE EMAIL = '".$_POST['email']."';");
+    while($row = $emailRs->fetch_assoc()){
+      $count = $row['CTR'];
+    }
   }
   if($count > 0){
     header("Location: customerRegistration.php?msg=emailError");
