@@ -25,6 +25,15 @@ $movieRs = $conn->query($movieSql);
           <h1 class="page-header">Inventory Copies(Store <?php echo $_SESSION['storeId'] ?>)</h1>
         </div>
       </div><!--/.row-->
+      <?php if(isset($_GET['success'])){ ?>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><i class="fa fa-info-circle"></i><strong><?php echo $_GET['success']; ?> Added into Inventory</strong>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
       <div class="row">
         <div class="col-lg-5">
           <div class="panel panel-info">
@@ -43,10 +52,10 @@ $movieRs = $conn->query($movieSql);
                   <tr>
                     <td><?php echo $row['TITLE']; ?></td>
                     <td><?php echo $row['COUNT']; ?> Copies</td>
-                    <td align="center"><a href="addCopyLogic.php?" class="btn btn-info">Select</a></td>
+                    <td align="center"><a href="addCopyLogic.php?m=<?php echo $row['FILM_ID']; ?>&n=<?php echo $row['TITLE']; ?>" class="btn btn-info">Select</a></td>
                   </tr>
                 <?php } ?>
-                </tbody>
+              </tbody>
               </table>
             </div>
           </div>
