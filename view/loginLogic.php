@@ -21,6 +21,9 @@ try{
     $lastName = $row['LAST_NAME'];
     $storeId = $row['STORE_ID'];
   }
+
+  $conn->commit();
+  $conn->autocommit(TRUE);
 }catch(Exception $e){
   $conn->rollback();
   $conn->autocommit(TRUE);

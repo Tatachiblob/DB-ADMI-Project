@@ -37,7 +37,7 @@ $movieRs = $conn->query($movieSql);
       <div class="row">
         <div class="col-lg-5">
           <div class="panel panel-info">
-            <div class="panel-heading"><strong>Available Movie Copis</strong></div>
+            <div class="panel-heading"><strong>Available Movie Copies</strong></div>
             <div class="panel-body">
               <table width="100%" class="table table-striped table-bordered table-hover" id="movieTable">
                 <thead>

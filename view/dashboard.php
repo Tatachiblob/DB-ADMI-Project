@@ -145,7 +145,7 @@ $movieRs = $conn->query("SELECT FILM_ID, TITLE FROM FILM ORDER BY 2;");
                 </div>
               </div>
             </div>
-            <a href="rentMov.php">
+            <a href="rentMoviePage.php">
               <div class="panel-footer">
                 <span class="pull-left">View Details</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -166,7 +166,7 @@ $movieRs = $conn->query("SELECT FILM_ID, TITLE FROM FILM ORDER BY 2;");
                 </div>
               </div>
             </div>
-            <a href="#">
+            <a href="returnMoviePage.php">
               <div class="panel-footer">
                 <span class="pull-left">View Details</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
