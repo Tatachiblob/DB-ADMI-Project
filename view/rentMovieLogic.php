@@ -15,6 +15,28 @@ if(!isset($_POST['i']) && !isset($_POST['c']) && !isset($_POST['payment'])){
   try{
     $conn->autocommit(FALSE);
 
+    //check if customer already rented the same film TITLE
+    $filmCheck = $conn->query("SELECT   F.FILM_ID
+                               FROM     (SELECT * FROM RENTAL WHERE RETURN_DATE IS NULL) R
+                               JOIN     (SELECT * FROM INVENTORY WHERE STORE_ID = {$_SESSION['storeId']}) I ON R.INVENTORY_ID = I.INVENTORY_ID
+                               JOIN     FILM F ON I.FILM_ID = F.FILM_ID
+                               WHERE    R.CUSTOMER_ID = {$_POST['c']};");
+    $filmCheck2 = $conn->query("SELECT   F.FILM_ID
+                               FROM     INVENTORY I
+                               JOIN     FILM F ON I.FILM_ID = F.FILM_ID
+                               WHERE    I.INVENTORY_ID = {$_POST['i']};");
+    $filmCheckId1 = -1;
+    $filmCheckId2 = -2;
+    while($row = $filmCheck->fetch_assoc()){
+      $filmCheckId1 = $row['FILM_ID'];
+    }
+    while($row = $filmCheck2->fetch_assoc()){
+      $filmCheckId2 = $row['FILM_ID'];
+    }
+    if($filmCheckId1 == $filmCheckId2){
+      throw new Exception("Customer has already rented this movie");
+    }
+
     $insertRental = $conn->prepare("INSERT INTO RENTAL (INVENTORY_ID, CUSTOMER_ID , STAFF_ID) VALUES (?, ?, ?);");
     $insertPayment= $conn->prepare("INSERT INTO PAYMENT(CUSTOMER_ID, STAFF_ID, RENTAL_ID, AMOUNT, PAYMENT_DATE) VALUES (?, ?, ?, ?, NOW());");
     $insertRental->bind_param("iii", $inventoryId, $custId, $staffId);

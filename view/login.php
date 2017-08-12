@@ -10,7 +10,7 @@ if(isset($_SESSION['isLogin'])){
 <html>
 <head>
   <title>Login Page</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div class="container">

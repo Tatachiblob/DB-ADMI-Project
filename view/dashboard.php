@@ -10,7 +10,7 @@ $movieRs = $conn->query("SELECT FILM_ID, TITLE FROM FILM ORDER BY 2;");
 <html>
 <head>
   <title>Main Menu</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include "../styleInclude.html"; ?>
 </head>
 <body>
   <div id="wrapper">

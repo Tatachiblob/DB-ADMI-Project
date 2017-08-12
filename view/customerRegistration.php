@@ -6,7 +6,7 @@ $countryRs = $conn->query("SELECT COUNTRY_ID, COUNTRY FROM COUNTRY ORDER BY COUN
 <html>
 <head>
   <title>Add New Customer</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div id="wrapper">

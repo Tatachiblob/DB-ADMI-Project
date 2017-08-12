@@ -34,7 +34,7 @@ if(!isset($_POST['firstName']) || !isset($_POST['lastName']) || !isset($_POST['c
 <html>
 <head>
   <title>Add New Customer</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div id="wrapper">

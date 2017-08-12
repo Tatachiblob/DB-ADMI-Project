@@ -11,6 +11,7 @@ $countSql = "SELECT		C.CUSTOMER_ID, C.STORE_ID, C.FIRST_NAME, C.LAST_NAME, COUNT
 $inventorySql = "SELECT		I.INVENTORY_ID, I.STATUS, F.TITLE, F.RELEASE_YEAR, F.RENTAL_RATE
                  FROM     FILM F
                  JOIN     (SELECT * FROM INVENTORY WHERE STORE_ID = {$_SESSION['storeId']} AND STATUS = 2) I ON F.FILM_ID = I.FILM_ID
+                 WHERE    F.FILM_ID NOT IN (SELECT F.FILM_ID FROM RENTAL R JOIN INVENTORY I ON R.INVENTORY_ID = I.INVENTORY_ID JOIN FILM F ON I.FILM_ID = F.FILM_ID WHERE R.RETURN_DATE IS NULL AND R.CUSTOMER_ID = {$_POST['id']})
                  ORDER BY 3";
 $movieCountRs = $conn->query($countSql);
 $inventoryRs = $conn->query($inventorySql);
@@ -58,7 +59,8 @@ while($row = $movieCountRs->fetch_assoc()){
 <script>
 $(document).ready(function(){
   $('#movieTable').DataTable({
-    responsive: true
+    responsive: true,
+    "order": [[2, "desc"]]
   });
 });
 </script>

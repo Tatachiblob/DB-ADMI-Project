@@ -14,7 +14,7 @@ $movieRs = $conn->query($movieSql);
 <html>
 <head>
   <title> New Inventory Copy</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div id="wrapper">

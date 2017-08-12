@@ -11,7 +11,7 @@ $langRs2 = $conn->query("SELECT LANGUAGE_ID, NAME FROM LANGUAGE ORDER BY 2");
 <html>
 <head>
   <title>Add New Movie</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div id="wrapper">

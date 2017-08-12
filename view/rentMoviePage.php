@@ -11,7 +11,7 @@ $abc = $conn->query("SELECT CUSTOMER_ID, FIRST_NAME, LAST_NAME FROM CUSTOMER WHE
 <html>
 <head>
   <title>Movie Rental Page</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div id="wrapper">

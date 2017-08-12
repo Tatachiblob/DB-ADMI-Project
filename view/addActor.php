@@ -38,7 +38,7 @@ if(!isset($_GET['id'])){
 <html>
 <head>
   <title>Movie Actor Modification</title>
-  <?php include '..\/styleInclude.html'; ?>
+  <?php include '../styleInclude.html'; ?>
 </head>
 <body>
   <div id="wrapper">
